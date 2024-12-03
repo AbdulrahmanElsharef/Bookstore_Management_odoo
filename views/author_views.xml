@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_author_tree" model="ir.ui.view">
+        <field name="name">bookstore.author.tree</field>
+        <field name="model">bookstore.author</field>
+        <field name="arch" type="xml">
+            <tree string="Authors">
+                <field name="name"/>
+                <field name="nationality"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="book_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_author_form" model="ir.ui.view">
+        <field name="name">bookstore.author.form</field>
+        <field name="model">bookstore.author</field>
+        <field name="arch" type="xml">
+            <form string="Author">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Author Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="birth_date"/>
+                            <field name="nationality"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="website"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Biography">
+                            <field name="biography"/>
+                        </page>
+                        <page string="Books">
+                            <field name="book_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_author_search" model="ir.ui.view">
+        <field name="name">bookstore.author.search</field>
+        <field name="model">bookstore.author</field>
+        <field name="arch" type="xml">
+            <search string="Authors">
+                <field name="name"/>
+                <field name="nationality"/>
+                <field name="email"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Nationality" name="group_by_nationality" context="{'group_by': 'nationality'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_bookstore_author" model="ir.actions.act_window">
+        <field name="name">Authors</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bookstore.author</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_author_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first author!
+            </p>
+        </field>
+    </record>
+</odoo>

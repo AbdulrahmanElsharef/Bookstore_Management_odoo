@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Main Menu -->
+    <menuitem id="menu_bookstore_root"
+              name="Bookstore"
+              sequence="10"/>
+
+    <!-- Books Menu -->
+    <menuitem id="menu_bookstore_books"
+              name="Books"
+              parent="menu_bookstore_root"
+              action="action_bookstore_book"
+              sequence="10"/>
+
+    <!-- Authors Menu -->
+    <menuitem id="menu_bookstore_authors"
+              name="Authors"
+              parent="menu_bookstore_root"
+              action="action_bookstore_author"
+              sequence="20"/>
+
+    <!-- Publishers Menu -->
+    <menuitem id="menu_bookstore_publishers"
+              name="Publishers"
+              parent="menu_bookstore_root"
+              action="action_bookstore_publisher"
+              sequence="30"/>
+
+    <!-- Categories Menu -->
+    <menuitem id="menu_bookstore_categories"
+              name="Categories"
+              parent="menu_bookstore_root"
+              action="action_bookstore_category"
+              sequence="40"/>
+</odoo>
